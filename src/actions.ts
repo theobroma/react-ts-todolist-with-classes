@@ -26,11 +26,11 @@ export function getUsersFullfilled(users) {
 }
 
 export function getUsers() {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(getUsersPending());
     UserApi.getUsers()
       .then(sleeper(100))
-      .then(users => {
+      .then((users) => {
         dispatch(getUsersFullfilled(users));
       })
       .catch(function(response) {
@@ -48,11 +48,11 @@ export function addUserFullfilled(user) {
 }
 
 export function addUser(user) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(addUserPending());
     UserApi.addUser(user)
       .then(sleeper(100))
-      .then(user => {
+      .then((user) => {
         dispatch(addUserFullfilled(user));
       })
       .catch(function(response) {
@@ -62,11 +62,11 @@ export function addUser(user) {
 }
 
 export function removeUser(id) {
-  return dispatch => {
-    dispatch(removeUserPending());
+  return (dispatch) => {
+    dispatch(removeUserPending(id));
     UserApi.removeUser(id)
       .then(sleeper(100))
-      .then(user => {
+      .then((user) => {
         dispatch(removeUserFullfilled(id));
       })
       .catch(function(response) {
@@ -75,16 +75,16 @@ export function removeUser(id) {
   };
 }
 
-export const removeUserPending = id => {
+export const removeUserPending = (id) => {
   return { type: REMOVE_USER_PENDING, id };
 };
 
-export const removeUserFullfilled = id => {
+export const removeUserFullfilled = (id) => {
   return { type: REMOVE_USER_FULFILLED, id };
 };
 //utility fn for request delay
 function sleeper(ms) {
   return function(x) {
-    return new Promise(resolve => setTimeout(() => resolve(x), ms));
+    return new Promise((resolve) => setTimeout(() => resolve(x), ms));
   };
 }
