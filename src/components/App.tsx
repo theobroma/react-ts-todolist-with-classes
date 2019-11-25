@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
+import MainApp from '../containers/MainApp';
 
-const reactLogo = require('./../assets/img/react_logo.svg');
+// const reactLogo = require('./../assets/img/react_logo.svg');
 import './../assets/scss/index.scss';
 
 class App extends React.Component<{}, undefined> {
   public render() {
     return (
-      <div className="app">
-        <h1>Hello World!222</h1>
-        <p>Foo to the barz</p>
-        <img src={reactLogo} height="480" />
+      <div className="App">
+        <section className="todoapp">
+          <MainApp />
+          123123
+        </section>
       </div>
     );
   }

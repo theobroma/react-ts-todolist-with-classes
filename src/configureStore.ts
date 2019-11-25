@@ -12,7 +12,7 @@ const configureStore = () => {
   const persistedState = loadState();
 
   let totalInitialState = {
-    users: {
+    todos: {
       data: MOCK_DATA,
       pending: false,
       errorMessage: '',

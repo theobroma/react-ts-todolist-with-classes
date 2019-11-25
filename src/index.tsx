@@ -8,11 +8,11 @@ const rootEl = document.getElementById('root');
 
 const store = configureStore();
 
-// render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   rootEl,
-// );
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootEl,
+);
 
-render(<App />, rootEl);
+// render(<App />, rootEl);
