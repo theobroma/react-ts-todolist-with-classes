@@ -4,6 +4,7 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "target": "es5",

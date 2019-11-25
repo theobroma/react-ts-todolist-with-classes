@@ -8,7 +8,7 @@ export interface ITodo {
 // Todo form interface
 export interface ITodoForm {
   todos: ITodo[];
-  // handleTodoCreate: (todo: ITodo) => void;
+  handleTodoCreate: (todo: ITodo) => void;
 }
 
 // Todo list interface
