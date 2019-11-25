@@ -1,55 +1,60 @@
-// Import dependencies
-import * as React from 'react';
-import shortid from 'shortid';
+import React, { Component, Fragment, useState } from 'react';
+import classNames from 'classnames';
 
-// Import interfaces
-import { ITodo, ITodoForm } from './../interfaces';
+class TodoTextInput extends Component<any, any> {
+  static defaultProps = {
+    text: '',
+    placeholder: 'What needs to be done?',
+    editing: false,
+    newTodo: false,
+  };
 
-// Todo form component
-const TodoForm = (props: ITodoForm) => {
-  // Create ref for form input
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  state = {
+    text: '',
+  };
 
-  // Create new form state
-  const [formState, setFormState] = React.useState('');
+  handleSubmit = (e: any) => {
+    const text = e.target.value.trim();
+    if (e.which === 13) {
+      this.props.onSave(text);
+      if (this.props.newTodo) {
+        this.setState({ text: '' });
+      }
+    }
+  };
 
-  // Handle todo input change
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    // Update form state with the text from input
-    setFormState(event.target.value);
+  handleChange(e: any) {
+    //console.log('handleChange');
+    this.setState({ text: e.target.value });
   }
 
-  // Handle 'Enter' in todo input
-  function handleInputEnter(event: React.KeyboardEvent) {
-    // Check for 'Enter' key
-    if (event.key === 'Enter') {
-      // Prepare new todo object
-      const newTodo: ITodo = {
-        _id: shortid.generate(),
-        text: formState,
-        completed: false,
-      };
-
-      // Create new todo item
-      props.handleTodoCreate(newTodo);
-
-      // Reset the input field
-      if (inputRef && inputRef.current) {
-        inputRef.current.value = '';
-      }
+  handleBlur(e: any) {
+    if (!this.props.newTodo) {
+      this.props.onSave(e.target.value);
     }
   }
 
-  return (
-    <input
-      className="new-todo"
-      ref={inputRef}
-      type="text"
-      placeholder="Enter new todo"
-      onChange={(event) => handleInputChange(event)}
-      onKeyPress={(event) => handleInputEnter(event)}
-    />
-  );
-};
+  render() {
+    return (
+      <Fragment>
+        <input
+          // className={classNames({
+          //   edit: this.props.editing,
+          //   'new-todo': this.props.newTodo,
+          // })}
+          className="new-todo"
+          type="text"
+          placeholder={this.props.placeholder}
+          autoFocus={true}
+          value={this.state.text}
+          onBlur={this.handleBlur.bind(this)}
+          onChange={this.handleChange.bind(this)}
+          onKeyDown={this.handleSubmit.bind(this)}
+        />
+        {/* <pre>{JSON.stringify(this.state, null, 4)}</pre> */}
+      </Fragment>
+    );
+  }
+}
 
-export default TodoForm;
+export default TodoTextInput;
