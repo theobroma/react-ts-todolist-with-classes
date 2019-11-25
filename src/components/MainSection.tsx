@@ -28,7 +28,7 @@ export default class MainSection extends React.Component<any, any> {
     return null;
   }
 
-  renderTodos() {
+  _renderTodos() {
     const { todos } = this.props;
     //mock with todoarr if needed
     return todos.filter(this._filterTodos).map((todo: any) => (
@@ -41,6 +41,12 @@ export default class MainSection extends React.Component<any, any> {
         // editTodo={this.props.editTodo}
       />
     ));
+  }
+
+  renderTodos() {
+    const { todos } = this.props;
+    //mock with todoarr if needed
+    return todos.map((todo: any) => <TodoItem key={todo._id} todo={todo} />);
   }
 
   render() {

@@ -11,7 +11,6 @@ class App extends React.Component<{}, undefined> {
       <div className="App">
         <section className="todoapp">
           <MainApp />
-          123123
         </section>
       </div>
     );
