@@ -1,18 +1,10 @@
-//Very useful template for understanding structure of  https://github.com/tastejs/todomvc-app-css
 import * as React from 'react';
 import * as cx from 'classnames';
 import { connect } from 'react-redux';
-//mock data if needed
-import todoarr from '../helpers/mockdata';
-// import { Todo, IState } from '../model';
+// mock data if needed
+// import todoarr from '../helpers/mockdata';
 import TodoItem from './TodoItem';
 
-interface MainSectionProps {
-  //todoarr: Todo[];
-}
-interface MainSectionState {}
-
-//replace todoarr with state from redux or reverse
 export default class MainSection extends React.Component<any, any> {
   _filterTodos = (todo: any) =>
     this.props.filter === 'SHOW_ALL' ||
@@ -45,7 +37,6 @@ export default class MainSection extends React.Component<any, any> {
 
   renderTodos() {
     const { todos } = this.props;
-    //mock with todoarr if needed
     return todos.map((todo: any) => <TodoItem key={todo._id} todo={todo} />);
   }
 
