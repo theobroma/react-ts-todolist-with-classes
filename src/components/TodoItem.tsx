@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
 // import * as cx from 'classnames';
 
 import { ITodoItem } from '../interfaces';
@@ -6,7 +7,10 @@ import { ITodoItem } from '../interfaces';
 const TodoItem = (props: ITodoItem) => {
   const {
     todo: { _id, text, completed },
+    handleTodoRemove,
   } = props;
+
+  const dispatch = useDispatch();
 
   let element;
   element = (
@@ -25,7 +29,8 @@ const TodoItem = (props: ITodoItem) => {
       </label>
       <button
         className="destroy"
-        // onClick={() => removeTodo(_id)}
+        //  onClick={() => handleTodoRemove(_id)}
+        onClick={() => dispatch(handleTodoRemove(_id))}
       />
     </div>
   );
@@ -38,4 +43,4 @@ const TodoItem = (props: ITodoItem) => {
   );
 };
 
-export default TodoItem;
+export default connect(null, {})(TodoItem);

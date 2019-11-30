@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import uuidv4 from 'uuid/v4';
 
-import { REQUEST, SUCCESS, ERROR, ADD_TODO } from './actions';
+import { REQUEST, SUCCESS, ERROR, ADD_TODO, REMOVE_TODO } from './actions';
 
 export const usersInitialState = {
   data: [],
@@ -25,12 +25,12 @@ function todos(state = usersInitialState, action) {
           ...state.data,
         ],
       };
-    // case REMOVE_TODO_FULFILLED:
-    //   return {
-    //     ...state,
-    //     pending: false,
-    //     data: state.data.filter((todo: any) => todo._id !== action._id)
-    //   };
+    case REMOVE_TODO + REQUEST:
+      return {
+        ...state,
+        pending: false,
+        data: state.data.filter((todo: any) => todo._id !== action.payload),
+      };
     // case TOGGLE_TODO_FULFILLED:
     //   return {
     //     ...state,

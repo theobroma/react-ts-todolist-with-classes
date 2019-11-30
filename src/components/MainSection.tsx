@@ -21,14 +21,14 @@ export default class MainSection extends React.Component<any, any> {
   }
 
   _renderTodos() {
-    const { todos } = this.props;
+    const { todos, handleTodoRemove } = this.props;
     //mock with todoarr if needed
     return todos.filter(this._filterTodos).map((todo: any) => (
       <TodoItem
         key={todo._id}
         todo={todo}
         // addTodo={this.props.addTodo}
-        // removeTodo={this.props.removeTodo}
+        handleTodoRemove={this.props.handleTodoRemove}
         // toggleTodo={this.props.toggleTodo}
         // editTodo={this.props.editTodo}
       />
@@ -37,7 +37,9 @@ export default class MainSection extends React.Component<any, any> {
 
   renderTodos() {
     const { todos } = this.props;
-    return todos.map((todo: any) => <TodoItem key={todo._id} todo={todo} />);
+    return todos.map((todo: any) => (
+      <TodoItem key={todo._id} todo={todo} handleTodoRemove={this.props.handleTodoRemove} />
+    ));
   }
 
   render() {
