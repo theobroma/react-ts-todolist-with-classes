@@ -1,6 +1,6 @@
 import { connect, useSelector, useDispatch } from 'react-redux';
 import * as React from 'react';
-import { addTodo, handleTodoRemove } from '../actions';
+import { addTodo, handleTodoRemove, handleTodoToggle } from '../actions';
 import HeaderContainer from '../containers/HeaderContainer';
 import MainSectionComponent from '../components/MainSection';
 // import FooterComponent from '../components/Footer';
@@ -13,9 +13,13 @@ const MainApp = (props: any) => {
       {/*Header*/}
       <HeaderContainer />
       {/*Main*/}
-      <MainSectionComponent todos={todos} handleTodoRemove={props.handleTodoRemove} />
+      <MainSectionComponent
+        todos={todos}
+        handleTodoRemove={props.handleTodoRemove}
+        handleTodoToggle={props.handleTodoToggle}
+      />
     </div>
   );
 };
 
-export default connect(null, { handleTodoRemove })(MainApp);
+export default connect(null, { handleTodoRemove, handleTodoToggle })(MainApp);

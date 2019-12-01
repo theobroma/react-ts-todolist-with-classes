@@ -38,7 +38,12 @@ export default class MainSection extends React.Component<any, any> {
   renderTodos() {
     const { todos } = this.props;
     return todos.map((todo: any) => (
-      <TodoItem key={todo._id} todo={todo} handleTodoRemove={this.props.handleTodoRemove} />
+      <TodoItem
+        key={todo._id}
+        todo={todo}
+        handleTodoRemove={this.props.handleTodoRemove}
+        handleTodoToggle={this.props.handleTodoToggle}
+      />
     ));
   }
 

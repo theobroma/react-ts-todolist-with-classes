@@ -8,6 +8,7 @@ const TodoItem = (props: ITodoItem) => {
   const {
     todo: { _id, text, completed },
     handleTodoRemove,
+    handleTodoToggle,
   } = props;
 
   const dispatch = useDispatch();
@@ -20,10 +21,12 @@ const TodoItem = (props: ITodoItem) => {
         type="checkbox"
         checked={completed}
         // onChange={() => toggleTodo(_id, completed, text)}
+        onChange={() => dispatch(handleTodoToggle(_id))}
       />
       <label
         htmlFor="itself"
-        //  onDoubleClick={this.handleDoubleClick}
+        // edit
+        // onDoubleClick={() => dispatch(handleTodoToggle(_id))}
       >
         {text}
       </label>
