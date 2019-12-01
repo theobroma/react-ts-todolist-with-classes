@@ -1,25 +1,19 @@
-import { connect, useSelector, useDispatch } from 'react-redux';
-import * as React from 'react';
-import { addTodo, handleTodoRemove, handleTodoToggle } from '../actions';
+import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
-import MainSectionComponent from '../components/MainSection';
-// import FooterComponent from '../components/Footer';
+import ListContainer from '../containers/ListContainer';
+import FooterContainer from '../containers/FooterContainer';
 
 const MainApp = (props: any) => {
-  const todos = useSelector((state) => state.todos.data);
-  const dispatch = useDispatch();
   return (
     <div>
       {/*Header*/}
       <HeaderContainer />
       {/*Main*/}
-      <MainSectionComponent
-        todos={todos}
-        handleTodoRemove={props.handleTodoRemove}
-        handleTodoToggle={props.handleTodoToggle}
-      />
+      <ListContainer />
+      {/*Footer*/}
+      <FooterContainer />
     </div>
   );
 };
 
-export default connect(null, { handleTodoRemove, handleTodoToggle })(MainApp);
+export default MainApp;
