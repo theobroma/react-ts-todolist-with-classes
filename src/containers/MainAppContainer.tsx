@@ -1,7 +1,7 @@
 import { connect, useSelector, useDispatch } from 'react-redux';
 import * as React from 'react';
 import { addTodo, handleTodoRemove } from '../actions';
-import HeaderComponent from '../components/Header';
+import HeaderContainer from '../containers/HeaderContainer';
 import MainSectionComponent from '../components/MainSection';
 // import FooterComponent from '../components/Footer';
 
@@ -11,10 +11,7 @@ const MainApp = (props: any) => {
   return (
     <div>
       {/*Header*/}
-      <HeaderComponent
-        // addTodo={this.props.addTodo}
-        addTodo={() => dispatch(addTodo('example123123'))}
-      />
+      <HeaderContainer />
       {/*Main*/}
       <MainSectionComponent todos={todos} handleTodoRemove={props.handleTodoRemove} />
     </div>
