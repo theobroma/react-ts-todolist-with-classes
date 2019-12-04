@@ -17,9 +17,11 @@ class TodoTextInput extends Component<any, any> {
     const text = e.target.value.trim();
     if (e.which === 13) {
       this.props.onSave(text);
-      if (this.props.newTodo) {
-        this.setState({ text: '' });
-      }
+      // TODO:
+      this.setState({ text: '' });
+      // if (this.props.newTodo) {
+      //   this.setState({ text: '' });
+      // }
     }
   };
 
@@ -31,6 +33,7 @@ class TodoTextInput extends Component<any, any> {
   handleBlur(e: any) {
     if (!this.props.newTodo) {
       this.props.onSave(e.target.value);
+      this.setState({ text: '' });
     }
   }
 
