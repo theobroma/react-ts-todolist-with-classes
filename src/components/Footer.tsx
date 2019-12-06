@@ -5,7 +5,7 @@ import FilterLink from './FilterLink';
 class Footer extends React.Component<any, any> {
   _renderClearButton() {
     const { completedCount, removeCompleted } = this.props;
-    if (completedCount > 0) {
+    if (completedCount > 0 || true) {
       return (
         <button className="clear-completed" onClick={removeCompleted}>
           Clear completed

@@ -5,6 +5,7 @@ export const ERROR = '_ERROR';
 export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const TODOS_REMOVE_COMPLETED = 'TODOS_REMOVE_COMPLETED';
 
 export const addTodo = (todo: any) => {
   // console.log(todo);
@@ -20,3 +21,5 @@ export const handleTodoToggle = (id: string, completed: boolean, text: string) =
   //console.log(completed);
   return { type: TOGGLE_TODO + REQUEST, payload: { id, completed, text } };
 };
+
+export const removeCompleted = () => ({ type: TODOS_REMOVE_COMPLETED + REQUEST });
