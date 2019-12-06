@@ -17,9 +17,9 @@ export const handleTodoRemove = (_id: string) => {
   return { type: REMOVE_TODO + REQUEST, payload: _id };
 };
 
-export const handleTodoToggle = (id: string, completed: boolean, text: string) => {
-  //console.log(completed);
-  return { type: TOGGLE_TODO + REQUEST, payload: { id, completed, text } };
+export const handleTodoToggle = (id: string) => {
+  // console.log(id);
+  return { type: TOGGLE_TODO + REQUEST, payload: { id } };
 };
 
 export const removeCompleted = () => ({ type: TODOS_REMOVE_COMPLETED + REQUEST });
