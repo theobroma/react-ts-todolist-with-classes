@@ -9,6 +9,7 @@ import {
   REMOVE_TODO,
   TOGGLE_TODO,
   TODOS_REMOVE_COMPLETED,
+  SET_FILTER,
 } from './actions';
 
 export const usersInitialState = {
@@ -75,4 +76,12 @@ function todos(state = usersInitialState, action) {
   }
 }
 
-export default combineReducers({ todos });
+//filter reducer
+function filter(state = 'SHOW_ALL', action: any) {
+  if (action.type === SET_FILTER) {
+    return action.filter;
+  }
+  return state;
+}
+
+export default combineReducers({ todos, filter });

@@ -7,6 +7,8 @@ export const REMOVE_TODO = '@@todos/REMOVE_TODO';
 export const TOGGLE_TODO = '@@todos/TOGGLE_TODO';
 export const TODOS_REMOVE_COMPLETED = '@@todos/TODOS_REMOVE_COMPLETED';
 
+export const SET_FILTER = '@@filter/SET_FILTER';
+
 export const addTodo = (todo: any) => {
   // console.log(todo);
   return { type: ADD_TODO + REQUEST, payload: todo };
@@ -23,3 +25,10 @@ export const handleTodoToggle = (id: string) => {
 };
 
 export const removeCompleted = () => ({ type: TODOS_REMOVE_COMPLETED + REQUEST });
+
+export const setFilter = (filter: any) => {
+  return {
+    type: SET_FILTER,
+    filter,
+  };
+};
