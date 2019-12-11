@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import produce from 'immer';
 import uuidv4 from 'uuid/v4';
 
 import {
@@ -78,11 +77,11 @@ function todos(state = usersInitialState, action) {
 }
 
 //filter reducer
-const filter = (state = 'SHOW_ALL', action: any) => {
+function filter(state = 'SHOW_ALL', action: any) {
   if (action.type === SET_FILTER) {
     return action.filter;
   }
   return state;
-};
+}
 
 export default combineReducers({ todos, filter });
