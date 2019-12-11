@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import * as cx from 'classnames';
 import { connect } from 'react-redux';
 // mock data if needed
 // import todoarr from '../helpers/mockdata';
 import TodoItem from './TodoItem';
 
-export default class List extends React.Component<any, any> {
+class List extends React.Component<any, any> {
   // _filterTodos = (todo: any) =>
   //   this.props.filter === 'SHOW_ALL' ||
   //   (this.props.filter === 'SHOW_ACTIVE' && !todo.completed) ||
@@ -36,7 +36,7 @@ export default class List extends React.Component<any, any> {
   // }
 
   renderTodos() {
-    const { todos } = this.props;
+    const { todos = [] } = this.props;
 
     return todos.map((todo: any) => (
       <TodoItem
@@ -63,3 +63,5 @@ export default class List extends React.Component<any, any> {
 // List.defaultProps = {
 //   todos: [],
 // };
+
+export default List;
