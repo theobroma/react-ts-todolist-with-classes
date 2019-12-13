@@ -3,12 +3,13 @@ import classnames from 'classnames';
 
 export default class FilterLink extends React.Component<any, any> {
   render() {
+    const { setFilter, type, filter } = this.props;
     return (
       <li>
         <a
           href="#"
-          onClick={() => this.props.setFilter(this.props.type)}
-          className={classnames({ selected: this.props.filter === this.props.type })}
+          onClick={() => setFilter(type)}
+          className={classnames({ selected: filter === type })}
         >
           {this.props.children}
         </a>
