@@ -13,19 +13,6 @@ export const usersInitialState = {
 const todos = produce((draft, action) => {
   // console.log(action);
   switch (action.type) {
-    // case ADD_TODO + REQUEST:
-    //   return {
-    //     ...state,
-    //     pending: false,
-    //     data: [
-    //       {
-    //         _id: uuidv4(),
-    //         completed: false,
-    //         text: action.payload,
-    //       },
-    //       ...state.data,
-    //     ],
-    //   };
     case types.ADD_TODO + types.REQUEST: {
       const value = {
         _id: uuidv4(),
@@ -36,37 +23,26 @@ const todos = produce((draft, action) => {
       return draft;
     }
 
-    // case REMOVE_TODO + REQUEST:
-    //   return {
-    //     ...state,
-    //     pending: false,
-    //     data: state.data.filter((todo: any) => todo._id !== action.payload),
-    //   };
     case types.REMOVE_TODO + types.REQUEST: {
       draft.data = draft.data.filter((todo: any) => todo._id !== action.payload);
       return draft;
     }
-    // case TOGGLE_TODO + REQUEST:
-    //   return {
-    //     ...state,
-    //     data: state.data.map((todo: any) => {
-    //       if (todo._id === action.payload.id) {
-    //         return { ...todo, completed: !todo.completed };
-    //       }
-    //       return todo;
-    //     }),
-    //   };
-    // case TODOS_REMOVE_COMPLETED + REQUEST:
-    //   return {
-    //     ...state,
-    //     data: state.data.filter((todo: any) => !todo.completed),
-    //   };
 
-    // case TODOS_REMOVE_COMPLETED_FULFILLED:
-    //   return {
-    //     ...state,
-    //     data: state.data.filter((todo: any) => !todo.completed)
-    //   };
+    case types.TOGGLE_TODO + types.REQUEST: {
+      draft.data = draft.data.map((todo: any) => {
+        if (todo._id === action.payload.id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      });
+      return draft;
+    }
+
+    case types.TODOS_REMOVE_COMPLETED + types.REQUEST: {
+      draft.data = draft.data.filter((todo: any) => !todo.completed);
+      return draft;
+    }
+
     // case EDIT_TODO_FULFILLED:
     //   return {
     //     ...state,
