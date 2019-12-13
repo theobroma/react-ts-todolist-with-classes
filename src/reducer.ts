@@ -43,7 +43,7 @@ const todos = produce((draft, action) => {
     //     data: state.data.filter((todo: any) => todo._id !== action.payload),
     //   };
     case types.REMOVE_TODO + types.REQUEST: {
-      draft.data.filter((todo: any) => todo._id !== action.payload);
+      draft.data = draft.data.filter((todo: any) => todo._id !== action.payload);
       return draft;
     }
     // case TOGGLE_TODO + REQUEST:
