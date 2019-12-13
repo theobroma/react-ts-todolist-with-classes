@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 
 class List extends React.Component<any, any> {
-  // _filterTodos = (todo: any) =>
-  //   this.props.filter === 'SHOW_ALL' ||
-  //   (this.props.filter === 'SHOW_ACTIVE' && !todo.completed) ||
-  //   (this.props.filter === 'SHOW_COMPLETED' && todo.completed);
+  _filterTodos = (todo: any) =>
+    this.props.filter === 'SHOW_ALL' ||
+    (this.props.filter === 'SHOW_ACTIVE' && !todo.completed) ||
+    (this.props.filter === 'SHOW_COMPLETED' && todo.completed);
+
   // //TODO: implement toggle-all
   // // <input className="toggle-all" type="checkbox" checked={completedCount === todos.length} />
   // _renderToggleAll(completedCount: any) {
@@ -38,14 +39,16 @@ class List extends React.Component<any, any> {
   renderTodos() {
     const { todos = [] } = this.props;
 
-    return todos.map((todo: any) => (
-      <TodoItem
-        key={todo._id}
-        todo={todo}
-        handleTodoRemove={this.props.handleTodoRemove}
-        handleTodoToggle={this.props.handleTodoToggle}
-      />
-    ));
+    return todos
+      .filter(this._filterTodos)
+      .map((todo: any) => (
+        <TodoItem
+          key={todo._id}
+          todo={todo}
+          handleTodoRemove={this.props.handleTodoRemove}
+          handleTodoToggle={this.props.handleTodoToggle}
+        />
+      ));
   }
 
   render() {
