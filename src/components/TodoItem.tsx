@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
-// import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { ITodoItem } from '../interfaces';
 
@@ -39,7 +39,10 @@ const TodoItem = (props: ITodoItem) => {
   );
   return (
     <li
-    // className={cx({ completed: completed, editing: this.state.editing })}
+      className={cx({
+        completed: completed,
+        //  editing: this.state.editing
+      })}
     >
       {element}
     </li>

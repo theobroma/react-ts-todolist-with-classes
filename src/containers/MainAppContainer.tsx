@@ -25,7 +25,7 @@ const MainApp: React.FC = (props: any) => {
       {/*Header*/}
       <HeaderContainer />
       {/*Main*/}
-      <ListContainer />
+      <ListContainer activeTodoCount={activeTodoCount} />
       {/*Footer*/}
       {footer}
     </div>
